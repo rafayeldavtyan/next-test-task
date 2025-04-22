@@ -1,6 +1,7 @@
 :root {
   /* Light theme variables */
   --card-background: white;
+  --secondary-color: #e1e1e1;
   --text-color: #000000;
   --border-color: #e0e0e0;
   --input-background: white;
@@ -9,6 +10,7 @@
 
 [data-theme="dark"] {
   --card-background: #000000;
+  --secondary-color: #515151;
   --text-color: white;
   --border-color: #333333;
   --input-background: #1a1a1a;
