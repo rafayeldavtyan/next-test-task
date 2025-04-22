@@ -1,0 +1,77 @@
+.galleryItem {
+  width: 100%;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+  background: var(--card-background);
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--card-background, white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+}
+
+.imageContainer {
+  width: 120px;
+  height: 120px;
+  margin: 24px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--input-background, #f5f5f5);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  padding: 1rem 2rem;
+  text-align: center;
+  flex: 1;
+}
+
+.idContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+.idText {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--text-color, #000000);
+  transition: color 0.3s ease;
+}
