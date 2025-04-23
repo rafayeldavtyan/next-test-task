@@ -1,16 +1,17 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import styles from "../../pages/styles.module.css";
 
 const ThemeToggleButton = () => {
     const { theme, toggleTheme } = useTheme();
+    const activeTheme = useMemo(() => theme === 'light' ? 'Dark' : 'Light', [theme])
 
     return (
         <button
             onClick={toggleTheme}
             className={styles.button}
         >
-            Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+            Switch to {activeTheme} Mode
         </button>
     );
 };

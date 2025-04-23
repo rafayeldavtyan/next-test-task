@@ -6,6 +6,8 @@
   --border-color: #e0e0e0;
   --input-background: white;
   --header-background: white;
+  --button-background: #0070f3;
+  --button-hover: #005bb5;
 }
 
 [data-theme="dark"] {
@@ -15,6 +17,8 @@
   --border-color: #333333;
   --input-background: #1a1a1a;
   --header-background: #000000;
+  --button-background: #0065dd;
+  --button-hover: #00478f;
 }
 
 body {

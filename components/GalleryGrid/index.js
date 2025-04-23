@@ -6,7 +6,7 @@ const GalleryGrid = ({ data }) => {
     return (
         <div className={styles.grid}>
             {data.map((item) => (
-                <GalleryItem item={item} key={item.id} />
+                <GalleryItem {...item} key={item.id} />
             ))}
         </div>
     );

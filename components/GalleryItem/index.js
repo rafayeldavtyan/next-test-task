@@ -1,36 +1,38 @@
-import React, { useState } from 'react';
+import React, {useCallback, useState} from 'react';
 import Title from '../Title';
 import styles from './styles.module.css';
+import Image from "next/image";
+import img from '../../img.png';
 
-const GalleryItem = React.forwardRef(({ item }, ref) => {
+const GalleryItem = React.memo(({ id, title }) => {
   const [showId, setShowId] = useState(false);
-  const { id, title } = item;
 
   const toggleView = () => setShowId((prev) => !prev);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = useCallback((e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       toggleView();
     }
-  };
+  }, [toggleView]);
 
   return (
       <div
           className={styles.galleryItem}
-          onClick={toggleView}
-          onKeyDown={handleKeyDown}
           role="button"
           tabIndex={0}
           aria-pressed={showId}
           aria-label={`Gallery item titled ${title}`}
-          ref={ref}
+          onClick={toggleView}
+          onKeyDown={handleKeyDown}
       >
         <div className={`${styles.cardInner} ${showId ? styles.flipped : ''}`}>
           <div className={styles.cardFront}>
             <div className={styles.imageContainer}>
-              <img
-                  src="https://www.arimetrics.com/wp-content/uploads/2020/01/mockup-1.png"
+              <Image
+                  src={img}
+                  width={200}
+                  height={200}
                   alt={title}
                   className={styles.thumbnail}
               />

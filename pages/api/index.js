@@ -1,4 +1,4 @@
-import data from "../../api_preview.json";
+import previewJson from "../../api_preview.json";
 
 /**
  * @swagger
@@ -23,7 +23,7 @@ import data from "../../api_preview.json";
  *         description: A list of photos for the requested page and limit
  */
 export default function handler(req, res) {
-  const { page = 1, limit = 20 } = req.query;
+  const { page = 1, limit = 20, searchQuery = '' } = req.query;
 
   const pageNum = parseInt(page, 10);
   const limitNum = parseInt(limit, 10);
@@ -36,8 +36,13 @@ export default function handler(req, res) {
     return res.status(400).json({ error: "Invalid limit number" });
   }
 
+  let data = previewJson
   const startIndex = (pageNum - 1) * limitNum;
   const endIndex = startIndex + limitNum;
+
+  if (searchQuery) {
+    data = data.filter(el => el.title.toLowerCase().includes(searchQuery.toLowerCase()))
+  }
 
   const paginatedData = data.slice(startIndex, endIndex);
 
